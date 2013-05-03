@@ -44,7 +44,12 @@ module.exports = function(grunt){
 
     function setup(file, type){
       var pkg = grunt.file.readJSON(file);
-      var newVersion = pkg.version = semver.inc(pkg.version, type || 'patch');
+      var newVersion;
+      if (options.bump) {
+        newVersion = pkg.version = semver.inc(pkg.version, type || 'patch');
+      } else {
+        newVersion = pkg.version;
+      }
       return {file: file, pkg: pkg, newVersion: newVersion};
     }
 
@@ -64,7 +69,7 @@ module.exports = function(grunt){
     }
 
     function push(){
-      run('git push', 'pushed to remote');
+      run('git push', 'pushed to github');
     }
 
     function pushTags(config){
