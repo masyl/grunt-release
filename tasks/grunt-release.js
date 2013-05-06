@@ -54,7 +54,11 @@ module.exports = function(grunt){
     }
 
     function add(config){
-      run('git add ' + config.file);
+      if (config.addFiles) {
+        run('git add ' + config.addFile);
+      } else {
+        run('git add ' + config.file);
+      }
     }
 
     function commit(config){
