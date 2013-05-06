@@ -54,12 +54,12 @@ module.exports = function(grunt){
     }
 
     function add(config){
-      var files = (config.addFiles) ? config.addFiles : config.file;
+      var files = (options.addFiles) ? options.addFiles : options.file;
       run('git add ' + files);
     }
 
     function commit(config){
-      var files = (config.addFiles) ? config.addFiles : config.file;
+      var files = (options.addFiles) ? options.addFiles : options.file;
       var message = grunt.template.process(commitMessage, templateOptions);
       run('git commit '+ files +' -m "'+ message +'"', config.file + ' committed');
     }
