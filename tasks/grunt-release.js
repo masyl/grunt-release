@@ -80,6 +80,11 @@ module.exports = function(grunt){
       run('npm publish', 'published '+ config.newVersion +' to npm');
     }
 
+    function run(cmd, msg){
+      shell.exec(cmd, {silent:true});
+      if (msg) grunt.log.ok(msg);
+    }
+
     function bump(config){
       grunt.file.write(config.file, JSON.stringify(config.pkg, null, '  ') + '\n');
       grunt.log.ok('Version bumped to ' + config.newVersion);
