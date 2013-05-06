@@ -69,25 +69,15 @@ module.exports = function(grunt){
     }
 
     function push(){
-      run('git push', 'pushed to github');
+      run('git push', 'pushed to remote');
     }
 
     function pushTags(config){
-      run('git push --tags', 'pushed new tag '+ config.newVersion +' to github');
+      run('git push --tags', 'pushed new tag '+ config.newVersion +' to remote');
     }
 
     function publish(config){
       run('npm publish', 'published '+ config.newVersion +' to npm');
-    }
-
-    function run(cmd, msg){
-      shell.exec(cmd, {silent:true});
-      if (msg) grunt.log.ok(msg);
-    }
-
-    function push(){
-      shell.exec('git push');
-      grunt.log.ok('pushed to github');
     }
 
     function bump(config){
